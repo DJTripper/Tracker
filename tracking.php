@@ -18,6 +18,7 @@ $sql = 'INSERT INTO
         `tracking`
     SET
         `tracker_id` = :trackerId,
+        `sequence` = :sequence,
         `fix` = :fix,
         `lat` = :lat,
         `lat_type` = :latType,
@@ -34,6 +35,15 @@ $sql = 'INSERT INTO
         `dgpsStationId` = :dgpsStationId';
 $query = $db->prepare($sql);
 
+function reformatNmeaCoordinate($coord)
+{
+    $p = explode(",", $coord);
+
+    $splitPos = strpos($p[0], ".")-2;
+    $str = intval(substr($p[0], 0, $splitPos));
+    return $p[1].$str."° ".floatval(substr($p[0], $splitPos));
+}
+
 foreach ($lines as $line) {
     if (empty($line)) {
         continue;
@@ -41,13 +51,20 @@ foreach ($lines as $line) {
     try {
         $sentence = NMEA\Sentence\Factory::create(trim($line));
         $data = $sentence->getValues();
+        $lat = reformatNmeaCoordinate($data['latitud']);
+        $lon = reformatNmeaCoordinate($data['longitud']);
+        $point = \Location\Factory\CoordinateFactory::fromString($lat.", ".$lon)->format(
+            new \Location\Formatter\Coordinate\DecimalDegrees()
+        );
+
         $ret = $query->execute(
             array(
                 ":trackerId"                => $_GET['trackerId'],
+                ":sequence"                 => $_GET['sequence'],
                 ":fix"                      => date("Y-m-d ").implode(":", str_split(substr($data['fix'], 0, 6), 2)),
-                ":lat"                      => explode(",", $data['latitud'])[0],
+                ":lat"                      => explode(" ", $point)[0],
                 ":latType"                  => explode(",", $data['latitud'])[1],
-                ":long"                     => explode(",", $data['longitud'])[0],
+                ":long"                     => explode(" ", $point)[0],
                 ":longType"                 => explode(",", $data['longitud'])[1],
                 ":fixQuality"               => $data['fixQuality'],
                 ":numSatellites"            => $data['numSatellites'],
@@ -60,11 +77,8 @@ foreach ($lines as $line) {
                 ":dgpsStationId"            => intval($data['dgpsStationId'])
             )
         );
-        if (!$ret) {
-//			mail("test@alexdelius.com", "GPS", print_r($data, true).print_r($query->errorInfo(), true));
-        }
     } catch (\Exception $e) {
-//		mail("test@alexdelius.com", "GPS", print_r($e, true));
+        // Do nothing
     }
 }
 

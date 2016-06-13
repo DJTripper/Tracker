@@ -18,6 +18,7 @@ while ($row = fgets($f)) {
             $res = curl_exec($ch);
             curl_close($ch);
             $i = 0;
+            echo "done\n";
             if ($res) {
                 $buffer = "";
             }

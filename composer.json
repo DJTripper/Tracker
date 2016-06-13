@@ -1,0 +1,14 @@
+{
+    "name": "adelius/tracking",
+    "require": {
+        "pgodel/nmea": "dev-master",
+        "mjaschen/phpgeo": "1.3.*"
+    },
+    "authors": [
+        {
+            "name": "Alexander Delius",
+            "email": "composer@alexdelius.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

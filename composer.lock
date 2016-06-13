@@ -1,0 +1,117 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "7572afda6cee50dbbbb55e1bc75224b9",
+    "content-hash": "3a8dd69e4f51e8473a7d0c822537c897",
+    "packages": [
+        {
+            "name": "mjaschen/phpgeo",
+            "version": "1.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mjaschen/phpgeo.git",
+                "reference": "41fcb8d34f58aadcf62e6eade8342026a0397096"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mjaschen/phpgeo/zipball/41fcb8d34f58aadcf62e6eade8342026a0397096",
+                "reference": "41fcb8d34f58aadcf62e6eade8342026a0397096",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Location": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "Marcus Jaschen",
+                    "email": "mjaschen@gmail.com",
+                    "homepage": "https://www.marcusjaschen.de/"
+                }
+            ],
+            "description": "Simple Geo Library",
+            "homepage": "https://github.com/mjaschen/phpgeo",
+            "keywords": [
+                "Polygon",
+                "bounds",
+                "calculation",
+                "coordinate",
+                "distance",
+                "ellipsoid",
+                "geo",
+                "geofence",
+                "gis",
+                "polyline"
+            ],
+            "time": "2016-03-28 17:28:11"
+        },
+        {
+            "name": "pgodel/nmea",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pgodel/nmea.git",
+                "reference": "c2ce5af5026f840aac5b22603fe58c1b3b547cbc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pgodel/nmea/zipball/c2ce5af5026f840aac5b22603fe58c1b3b547cbc",
+                "reference": "c2ce5af5026f840aac5b22603fe58c1b3b547cbc",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "NMEA": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pablo Godel",
+                    "email": "pgodel@gmail.com",
+                    "homepage": "http://www.pablogodel.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Library to parse NMEA sentences",
+            "homepage": "https://github.com/pgodel/nmea",
+            "keywords": [
+                "gps",
+                "nmea"
+            ],
+            "time": "2014-12-12 05:11:58"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "pgodel/nmea": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

@@ -64,7 +64,7 @@ foreach ($lines as $line) {
                 ":fix"                      => date("Y-m-d ").implode(":", str_split(substr($data['fix'], 0, 6), 2)),
                 ":lat"                      => explode(" ", $point)[0],
                 ":latType"                  => explode(",", $data['latitud'])[1],
-                ":long"                     => explode(" ", $point)[0],
+                ":long"                     => explode(" ", $point)[1],
                 ":longType"                 => explode(",", $data['longitud'])[1],
                 ":fixQuality"               => $data['fixQuality'],
                 ":numSatellites"            => $data['numSatellites'],
